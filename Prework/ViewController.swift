@@ -61,8 +61,15 @@ class ViewController: UIViewController {
         totalAmount = billAmount + tipAmount
         
         // Update Tip Amount Label
-        tipAmountLabel.text = String(format: "$%.2f", tipAmount)
-        totalLabel.text = String(format: "$%.2f", totalAmount)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
+            tipAmountLabel.text = "\(formattedTipAmount)"
+        }
+        // Update total Amount Label
+        if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
+            totalLabel.text = "\(formattedTotalAmount)"
+        }
         
         // Update the Label width according to the contents
         tipAmountLabel.sizeToFit()
