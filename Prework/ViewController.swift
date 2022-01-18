@@ -35,6 +35,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         changeViewSelection(selectionViewControl as Any)
+        
+        // retrieve previously stored variable in previous app usage
+        let savedBillAmount = UserDefaults.standard.double(forKey: "billAmount")
+        let timeOpened = Date()
+        
+        if let refreshingTime = UserDefaults.standard.object(forKey: "refreshingTime") as? Date {
+            if (timeOpened < refreshingTime) {
+                billAmount = savedBillAmount
+                billAmountTextField.text = String(format: "%.2f", billAmount)
+                calculateTip()
+            }
+        }
     }
     
     // helper func: calculate and display the correct tip
@@ -67,7 +79,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     @IBAction func updateBill(_ sender: Any) {
         billAmount = Double(billAmountTextField.text!) ?? 0
         calculateTip()
@@ -98,6 +109,18 @@ class ViewController: UIViewController {
         tipPercent =  tipOptions[tipControl.selectedSegmentIndex]
         
         calculateTip()
+    }
+    
+    // override the viewWillDisappear to store information for the next launch
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // saving the Bill Amount to default
+        UserDefaults.standard.set(billAmount, forKey: "billAmount")
+        
+        // save the next refreshing time (10 minutes = 600 seconds)
+        let nextRefreshingTime = Date().addingTimeInterval(600)
+        UserDefaults.standard.set(nextRefreshingTime, forKey: "refreshingTime")
     }
 }
 
