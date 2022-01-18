@@ -4,7 +4,7 @@
 
 Submitted by: **Ruihang Liu**
 
-Time spent: **3** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -15,7 +15,7 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 
-* [ ] UI animations
+* [x] UI animations
 * [x] Remembering the bill amount across app restarts (if <10mins)
 * [x] Using locale-specific currency and currency thousands separators.
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
@@ -23,10 +23,11 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] List anything else that you can get done to improve the app functionality!
-- [x] Added Auto-Layout for different screen sizes
+- [x] Added Auto-Layout for different screen sizes (suits all current saling iPhones; i.e it might not work properly on iPhone 4 screen size.)
 - [x] Create a tip slider that adjusts the tip percentage.
 - [x] user can also enter a number to adjust the tip percentage. Slider adjust accordingly.
 - [x] Two different views for the above two tip-entry options
+- [x] Setting Page: User can choose among three currency options they preferred. Update the tip and total in the main screen accordingly.
 
 
 ## Video Walkthrough
