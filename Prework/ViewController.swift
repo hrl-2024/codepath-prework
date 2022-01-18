@@ -49,6 +49,12 @@ class ViewController: UIViewController {
         }
     }
     
+    // Make the billAmountTextField the first responder
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        billAmountTextField.becomeFirstResponder()
+    }
+    
     // helper func: calculate and display the correct tip
     func calculateTip() {
         tipAmount = billAmount * tipPercent
