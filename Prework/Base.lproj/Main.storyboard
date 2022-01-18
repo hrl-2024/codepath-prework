@@ -166,7 +166,7 @@
                     <navigationItem key="navigationItem" id="h9B-jI-CDq">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ybB-YU-CYy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ntd-0N-kyZ">
-                                <rect key="frame" x="254.66666666666666" y="5" width="104.33333333333334" height="34.333333333333336"/>
+                                <rect key="frame" x="254.66666666666666" y="4.6666666666666679" width="104.33333333333334" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="globe" catalog="system" title="Setting"/>
@@ -200,18 +200,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Setting Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIH-D4-ClJ">
-                                <rect key="frame" x="143" y="322" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sWj-yq-wgC">
+                                <rect key="frame" x="76" y="390.66666666666669" width="223" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-Nm-9uf">
+                                        <rect key="frame" x="0.0" y="0.0" width="223" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Select Your Preferred currency"/>
+                                        <connections>
+                                            <action selector="selectRegionAction:" destination="Pt2-XO-buU" eventType="touchUpInside" id="T6r-H1-sUo"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g6-mZ-D72">
+                                        <rect key="frame" x="0.0" y="0.0" width="223" height="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="US"/>
+                                        <connections>
+                                            <action selector="US:" destination="Pt2-XO-buU" eventType="touchUpInside" id="TIf-vi-Gru"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9e-hr-2Sq">
+                                        <rect key="frame" x="0.0" y="0.0" width="223" height="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="CN"/>
+                                        <connections>
+                                            <action selector="CN:" destination="Pt2-XO-buU" eventType="touchUpInside" id="SFE-8M-Yla"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzp-P5-1xS">
+                                        <rect key="frame" x="0.0" y="0.0" width="223" height="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="EU"/>
+                                        <connections>
+                                            <action selector="EU:" destination="Pt2-XO-buU" eventType="touchUpInside" id="PE8-Ws-2GO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oL2-99-US0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sWj-yq-wgC" firstAttribute="centerX" secondItem="LOa-wy-R3m" secondAttribute="centerX" id="2EC-qP-YbH"/>
+                            <constraint firstItem="sWj-yq-wgC" firstAttribute="centerY" secondItem="LOa-wy-R3m" secondAttribute="centerY" id="kwI-dZ-cqS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S8I-DQ-dvk"/>
+                    <connections>
+                        <outlet property="selectRegionButton" destination="zdc-Nm-9uf" id="83H-gN-UQb"/>
+                        <outletCollection property="regionButtons" destination="6g6-mZ-D72" collectionClass="NSMutableArray" id="Avd-no-OCd"/>
+                        <outletCollection property="regionButtons" destination="r9e-hr-2Sq" collectionClass="NSMutableArray" id="h8D-Em-VTI"/>
+                        <outletCollection property="regionButtons" destination="Zzp-P5-1xS" collectionClass="NSMutableArray" id="YIf-Zb-SG6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgc-gd-L8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

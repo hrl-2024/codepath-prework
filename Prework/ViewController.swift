@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var tipAmount = 0.0
     var totalAmount = 0.0
     
+    var preferredRegion = UserDefaults.standard.string(forKey: "regionPreference")
+    
     // View Outlets:
     @IBOutlet weak var popularTipSelection: UIView!
     @IBOutlet weak var customTipSelection: UIView!
@@ -49,6 +51,13 @@ class ViewController: UIViewController {
         }
     }
     
+    // for updating the user preference of currency and corresponding separator
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        preferredRegion = UserDefaults.standard.string(forKey: "regionPreference")
+        calculateTip()
+    }
+    
     // Make the billAmountTextField the first responder
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -63,6 +72,11 @@ class ViewController: UIViewController {
         // Update Tip Amount Label
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        
+        // using user preferred currency
+        if (preferredRegion != nil) {
+            formatter.locale = Locale.init(identifier: preferredRegion!)
+        }
         if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
             tipAmountLabel.text = "\(formattedTipAmount)"
         }
