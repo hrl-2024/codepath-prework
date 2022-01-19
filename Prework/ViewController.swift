@@ -109,6 +109,12 @@ class ViewController: UIViewController {
     @IBAction func updateBill(_ sender: Any) {
         billAmount = Double(billAmountTextField.text!) ?? 0
         calculateTip()
+        
+        // saving the Bill Amount to default
+        UserDefaults.standard.set(billAmount, forKey: "billAmount")
+        // save the next refreshing time (10 minutes = 600 seconds)
+        let nextRefreshingTime = Date().addingTimeInterval(600)
+        UserDefaults.standard.set(nextRefreshingTime, forKey: "refreshingTime")
     }
     
     @IBAction func sliderUpdate(_ sender: Any) {
@@ -136,18 +142,6 @@ class ViewController: UIViewController {
         tipPercent =  tipOptions[tipControl.selectedSegmentIndex]
         
         calculateTip()
-    }
-    
-    // override the viewWillDisappear to store information for the next launch
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        // saving the Bill Amount to default
-        UserDefaults.standard.set(billAmount, forKey: "billAmount")
-        
-        // save the next refreshing time (10 minutes = 600 seconds)
-        let nextRefreshingTime = Date().addingTimeInterval(600)
-        UserDefaults.standard.set(nextRefreshingTime, forKey: "refreshingTime")
     }
 }
 
