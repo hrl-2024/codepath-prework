@@ -28,6 +28,7 @@ The following **additional** features are implemented:
 - [x] user can also enter a number to adjust the tip percentage. Slider adjust accordingly.
 - [x] Two different views for the above two tip-entry options
 - [x] Setting Page: User can choose among three currency options they preferred. Update the tip and total in the main screen accordingly.
+- [x] Dark mode compatible
 
 
 ## Video Walkthrough
